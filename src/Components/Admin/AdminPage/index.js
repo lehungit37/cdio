@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import { Route, Switch, useRouteMatch } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import LoginAdmin from "../LoginPage";
+import PrivateRouter from "../PrivateRouter";
+import OrderAdmin from "./OrderAdmin";
+import "./Admin.scss";
+import MenuAdmin from "./MenuAdmin";
+import CategoryAdmin from "./CategoryAdmin";
+import ProductAdmin from "./ProductAdmin";
+import ProductAdminAdd from "./ProductAdmin/ProductAdminAdd";
+import ProductAdminDetail from "./ProductAdmin/ProductAdminDetail";
+
+export default function AdminPage() {
+  const { path } = useRouteMatch();
+  const [isAdmin, setIsAdmin] = useState(true);
+  return (
+    <div className="admin">
+      <BrowserRouter>
+        <MenuAdmin />
+        <div className="main__content">
+          <Switch>
+            <PrivateRouter
+              exact
+              path={`${path}/`}
+              component={OrderAdmin}
+              isAdmin={isAdmin}
+              title = "Order"
+            />
+            <PrivateRouter
+              exact
+              path={`${path}/category`}
+              component={CategoryAdmin}
+              isAdmin={isAdmin}
+              
+            />
+            <PrivateRouter
+              exact
+              path={`${path}/product`}
+              component={ProductAdmin}
+              isAdmin={isAdmin}
+              
+            />
+            <PrivateRouter
+              exact
+              path={`${path}/product/add`}
+              component={ProductAdminAdd}
+              isAdmin={isAdmin}
+              
+            />
+            <PrivateRouter
+              exact
+              path={`${path}/product/detail/:slug/:id`}
+              component={ProductAdminDetail}
+              isAdmin={isAdmin}
+              
+            />
+            <Route exact path={`${path}/login`} component={LoginAdmin} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </div>
+  );
+}
