@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import useFireStore from "../../../../Hooks/useFireStore";
 import "./Category.scss";
 import { v4 } from "uuid";
@@ -14,6 +14,7 @@ const CategoryAdmin = () => {
     nameCategory: "",
   };
   const [valueModal, setValueModal] = useState(initValue);
+  
   const handleAddCategory = () => {
     handleOpenModal();
     setAction("add");

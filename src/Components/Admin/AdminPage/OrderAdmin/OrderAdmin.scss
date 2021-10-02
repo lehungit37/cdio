@@ -18,154 +18,154 @@ $color: #11A1FD;
         font-size: 20px;
     }
 
-    .list__order {
-        .table {
-            border-collapse: separate;
-            border-spacing: 0px 10px;
+  
+}
 
-            tr {
+.list__order {
+    .table {
+        border-collapse: separate;
+        border-spacing: 0px 10px;
 
-                th,
-                td {
-                    vertical-align: middle;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                    border-top: 1px solid rgba(0, 0, 0, 0.1);
-                    border-left: 0;
-                    border-right: 0;
-                    box-shadow: 0px 0px 20px #FAFAFA;
+        tr {
 
-                    &:first-child {
-                        border-left: 1px solid rgba(0, 0, 0, 0.1);
-                        border-radius: 10px 0 0 10px;
-                        padding-left: 10px;
+            th,
+            td {
+                vertical-align: middle;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-left: 0;
+                border-right: 0;
+                box-shadow: 0px 0px 20px #FAFAFA;
+
+                &:first-child {
+                    border-left: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 10px 0 0 10px;
+                    padding-left: 10px;
+                }
+
+                &:last-child {
+                    border-right: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 0px 10px 10px 0px;
+
+                }
+            }
+
+            td {
+
+
+                &.user__shipping {
+                    @include flex(row, flex-start);
+                    align-items: center;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 100%;
+                        // transform: translateY(-7px);
                     }
 
-                    &:last-child {
-                        border-right: 1px solid rgba(0, 0, 0, 0.1);
-                        border-radius: 0px 10px 10px 0px;
+                    .name {
+                        margin-left: 5px;
 
                     }
                 }
 
-                td {
+                span {
+                    cursor: pointer;
 
-
-                    &.user__shipping {
-                        @include flex(row, flex-start);
-                        align-items: center;
-
-                        img {
-                            width: 40px;
-                            height: 40px;
-                            border-radius: 100%;
-                            // transform: translateY(-7px);
-                        }
-
-                        .name {
-                            margin-left: 5px;
-
-                        }
-                    }
-
-                    span {
-                        cursor: pointer;
-
-                        &.primary {
-                            background: $color;
-                            padding: 5px 10px;
-                            color: #fff;
-                            border-radius: 10px;
-                        }
-                    }
-
-                    &.control {
-                        position: relative;
-
-                        .icon {
-                            color: $color;
-                            font-size: 1.3rem;
-                            cursor: pointer;
-                        }
-
-                        &:hover {
-                            .list__action {
-                                display: block;
-                                opacity: 1;
-                                visibility: visible;
-                                transform: translateX(0px);
-                                left: -115px;
-
-                            }
-                        }
-
-                        .list__action {
-                            transition: .2s;
-                            position: absolute;
-                            left: -140%;
-                            top: 0%;
-                            background: $color;
-                            transform: translateX(-20px);
-                            opacity: 0;
-                            display: block;
-                            visibility: hidden;
-                            padding: 10px 25px;
-                            border-radius: 10px;
-
-                            &:before {
-                                content: "";
-                                position: absolute;
-                                width: 0;
-                                height: 0;
-                                top: 20px;
-                                right: -8px;
-                                border-top: 8px solid transparent;
-                                border-bottom: 8px solid transparent;
-                                border-left: 8px solid $color;
-                            }
-
-                            .action__item {
-                                margin: 10px 0px;
-                                color: #fff;
-                                cursor: pointer;
-
-                                ion-icon {
-                                    font-weight: 600;
-                                }
-                            }
-                        }
-
-                    }
-
-                    .status {
-
+                    &.primary {
+                        background: $color;
                         padding: 5px 10px;
-                        width: 100%;
-                        border-radius: 10px;
                         color: #fff;
-                        text-align: center;
-                        font-weight: 600;
+                        border-radius: 10px;
+                    }
+                }
 
-                        &.shipping {
-                            background: $color;
+                &.control {
+                    position: relative;
+
+                    .icon {
+                        color: $color;
+                        font-size: 1.3rem;
+                        cursor: pointer;
+                    }
+
+                    &:hover {
+                        .list__action {
+                            display: block;
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateX(0px);
+                            left: -115px;
+
+                        }
+                    }
+
+                    .list__action {
+                        transition: .2s;
+                        position: absolute;
+                        left: -140%;
+                        top: 0%;
+                        background: $color;
+                        transform: translateX(-20px);
+                        opacity: 0;
+                        display: block;
+                        visibility: hidden;
+                        padding: 10px 25px;
+                        border-radius: 10px;
+
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            top: 20px;
+                            right: -8px;
+                            border-top: 8px solid transparent;
+                            border-bottom: 8px solid transparent;
+                            border-left: 8px solid $color;
                         }
 
-                        &.success {
-                            background: #2ecc71;
-                        }
+                        .action__item {
+                            margin: 10px 0px;
+                            color: #fff;
+                            cursor: pointer;
 
-                        &.waiting {
-                            background: #f1c40f;
+                            ion-icon {
+                                font-weight: 600;
+                            }
                         }
+                    }
+
+                }
+
+                .status {
+
+                    padding: 5px 10px;
+                    width: 100%;
+                    border-radius: 10px;
+                    color: #fff;
+                    text-align: center;
+                    font-weight: 600;
+
+                    &.shipping {
+                        background: $color;
+                    }
+
+                    &.success {
+                        background: #2ecc71;
+                    }
+
+                    &.waiting {
+                        background: #f1c40f;
                     }
                 }
             }
         }
-
-
     }
+
+
 }
-
-
 .my-modal {
     // position: relative;
     width: 100%;

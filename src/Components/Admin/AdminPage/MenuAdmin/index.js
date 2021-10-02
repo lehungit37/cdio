@@ -30,10 +30,10 @@ const MenuAdmin = () => {
               </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to = "/admin/user">
               <span className = "icon__menu"><ion-icon name="people-outline"></ion-icon></span>
               <span className = "name__menu">User</span>
-              </a>
+              </NavLink>
           </li>
         </ul>
       </div>

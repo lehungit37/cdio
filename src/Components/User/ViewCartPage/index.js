@@ -7,7 +7,6 @@ import ViewCartItem from "./ViewCartItem";
 
 const ViewCartPage = () => {
   const { myCart, count, subTotal } = useContext(UserContext);
-
   return (
     <div>
       <div className="info__page">

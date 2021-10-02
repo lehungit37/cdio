@@ -27,6 +27,8 @@ export default function AuthProvider({ children }) {
             : " https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png",
           email: user.email,
           createAt: firebase.firestore.FieldValue.serverTimestamp(),
+          type: "email-password",
+          role: "user"
         };
 
         db.collection("KhachHang")
@@ -62,7 +64,7 @@ export default function AuthProvider({ children }) {
   const loginFacebook = async () => {
     return await auth.signInWithPopup(fbProvider).then((result) => {
       const { additionalUserInfo, user } = result;
-      console.log(user.photoURL);
+      console.log({additionalUserInfo, user});
       const data = {
         uid: user.uid,
         displayName: user.displayName,
@@ -72,7 +74,9 @@ export default function AuthProvider({ children }) {
         phoneNumber: user.phoneNumber,
         email: user.email,
         createAt: firebase.firestore.FieldValue.serverTimestamp(),
-        role: "user"
+        role: "user",
+        type: "facebook"
+
       };
       if (additionalUserInfo.isNewUser) {
         db.collection("KhachHang")
@@ -103,7 +107,8 @@ export default function AuthProvider({ children }) {
           phoneNumber: user.phoneNumber,
           email: user.email,
           createAt: firebase.firestore.FieldValue.serverTimestamp(),
-          role: "user"
+          role: "user",
+          type: "google"
         };
         if (additionalUserInfo.isNewUser) {
           db.collection("KhachHang").doc(user.uid).set(data);
