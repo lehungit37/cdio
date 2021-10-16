@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderAdmin from "../HeaderAdmin";
 import "./User.scss";
 import useFireStore from "../../../../Hooks/useFireStore";
+import ModalUser from "./ModalUser";
 
 const UserAdmin = () => {
   const user = useFireStore("KhachHang", null);
-  const handleEdit = ()=>{
-
-  }
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [valueEdit, setValueEdit] = useState();
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+  };
+  const handleEdit = (item) => {
+    setIsOpenModal(true);
+    setValueEdit(item);
+  };
   return (
     <>
       <HeaderAdmin title="User" />
+      {isOpenModal ? (
+        <ModalUser
+          setIsOpenModal={setIsOpenModal}
+          handleCloseModal={handleCloseModal}
+          valueEdit={valueEdit}
+          setValueEdit = {setValueEdit}
+        />
+      ) : null}
       <div className="user">
         <h4>User List</h4>
         <div className="list__order">
@@ -29,7 +44,7 @@ const UserAdmin = () => {
             <tbody>
               {user?.map((item, index) => {
                 return (
-                  <tr key = {item.uid}>
+                  <tr key={item.uid}>
                     <td>{index + 1}</td>
                     <td>{item.displayName}</td>
                     <td>{item.email}</td>
@@ -43,15 +58,17 @@ const UserAdmin = () => {
                         <i class="fas fa-ellipsis-v"></i>
                       </div>
                       <div className="list__action">
-                        <div className="action__item">
+                        <div
+                          className="action__item"
+                          onClick={(value) => handleEdit(item)}
+                        >
                           <ion-icon name="create-outline"></ion-icon> Edit
                         </div>
-                      
                       </div>
                     </td>
                   </tr>
-                )
-              }) }
+                );
+              })}
             </tbody>
           </table>
         </div>

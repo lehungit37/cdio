@@ -18,7 +18,7 @@ $color: #11A1FD;
         font-size: 20px;
     }
 
-  
+
 }
 
 .list__order {
@@ -166,6 +166,15 @@ $color: #11A1FD;
 
 
 }
+
+.order__modal {
+    .my-modal {
+        .modal__form {
+            top: 1rem;
+        }
+    }
+}
+
 .my-modal {
     // position: relative;
     width: 100%;

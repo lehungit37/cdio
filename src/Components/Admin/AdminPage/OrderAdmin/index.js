@@ -88,49 +88,56 @@ const OrderAdmin = () => {
   const handleAcceptEdit = () => {
     if (orderAction) {
       const cloneOrderDEdit = orderAction[0].myCart;
-    
-      
-       const index = cloneOrderDEdit.findIndex(item => item.id === idCartIttem)
-      if(status !== null){
-        cloneOrderDEdit[index].isCheck = Number(status)
+
+      const index = cloneOrderDEdit.findIndex(
+        (item) => item.id === idCartIttem
+      );
+      if (status !== null) {
+        cloneOrderDEdit[index].isCheck = Number(status);
       }
-      db.collection("DonHang").doc(idOrder).update({
-        myCart: cloneOrderDEdit
-      }).then(()=>{
-        alert("Edit success")
-      }).catch((error)=>{
-        alert ("Edit Fail")
-      })
+      db.collection("DonHang")
+        .doc(idOrder)
+        .update({
+          myCart: cloneOrderDEdit,
+        })
+        .then(() => {
+          alert("Edit success");
+        })
+        .catch((error) => {
+          alert("Edit Fail");
+        });
     }
   };
 
-  const displayStatus = (isCheck)=>{
-      const check = Number(isCheck)
-      if(check === 0) return "Waiting"
-      else if(check === 1) return "Shipping"
-      else return "Success"
-  }
-    const displayClassStatus = (isCheck)=>{
-        const check = Number(isCheck)
-        if(check === 0) return "status waiting"
-        else if(check === 1) return "status shipping"
-        else return "status success"
-    }
+  const displayStatus = (isCheck) => {
+    const check = Number(isCheck);
+    if (check === 0) return "Waiting";
+    else if (check === 1) return "Shipping";
+    else return "Success";
+  };
+  const displayClassStatus = (isCheck) => {
+    const check = Number(isCheck);
+    if (check === 0) return "status waiting";
+    else if (check === 1) return "status shipping";
+    else return "status success";
+  };
   return (
     <>
-      <HeaderAdmin title = "Order" />
-      {modal ? (
-        <ModalOrder
-          handleAcceptEdit={handleAcceptEdit}
-          orderAction={orderAction}
-          setStatus={setStatus}
-          isEdit={isEdit}
-          setIsEdit={setIsEdit}
-          orderItem={orderItem}
-          formatTime={formatTime}
-          setModal={setModal}
-        />
-      ) : null}
+      <HeaderAdmin title="Order" />
+      <div className="order__modal">
+        {modal ? (
+          <ModalOrder
+            handleAcceptEdit={handleAcceptEdit}
+            orderAction={orderAction}
+            setStatus={setStatus}
+            isEdit={isEdit}
+            setIsEdit={setIsEdit}
+            orderItem={orderItem}
+            formatTime={formatTime}
+            setModal={setModal}
+          />
+        ) : null}
+      </div>
       <div className="order">
         <h4>Order List</h4>
         <div className="list__order">
@@ -152,7 +159,7 @@ const OrderAdmin = () => {
                 ? // eslint-disable-next-line array-callback-return
                   convertArr.map((item, index) => {
                     return (
-                      <tr>
+                      <tr key={index}>
                         <th scope="row">{index + 1}</th>
                         <td className="id__order">{formatID(item.id)}</td>
                         <td className="user__shipping">
@@ -170,9 +177,7 @@ const OrderAdmin = () => {
                         </td>
                         <td>
                           <span
-                            className={
-                             displayClassStatus(item.value.isCheck)
-                            }
+                            className={displayClassStatus(item.value.isCheck)}
                           >
                             {displayStatus(item.value.isCheck)}
                           </span>

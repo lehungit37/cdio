@@ -92,7 +92,7 @@ $(function () {
   $(window).scroll(() => {
     var y = $(window).scrollTop();
     // console.log(y);
-    if (y > 100) {
+    if (y > 300) {
       $(".menu").addClass("sticky");
     } else {
       $(".menu").removeClass("sticky");
