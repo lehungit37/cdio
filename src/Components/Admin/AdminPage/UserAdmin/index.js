@@ -43,31 +43,34 @@ const UserAdmin = () => {
             </thead>
             <tbody>
               {user?.map((item, index) => {
-                return (
-                  <tr key={item.uid}>
-                    <td>{index + 1}</td>
-                    <td>{item.displayName}</td>
-                    <td>{item.email}</td>
-                    <td>{item.type}</td>
-                    <td>{item.role}</td>
-                    <td>
-                      <span className="primary">View Detail</span>
-                    </td>
-                    <td className="control">
-                      <div className="icon">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </div>
-                      <div className="list__action">
-                        <div
-                          className="action__item"
-                          onClick={(value) => handleEdit(item)}
-                        >
-                          <ion-icon name="create-outline"></ion-icon> Edit
+                if(item.role !== "admin"){
+
+                  return (
+                    <tr key={item.uid}>
+                      <td>{index + 1}</td>
+                      <td>{item.displayName}</td>
+                      <td>{item.email}</td>
+                      <td>{item.type}</td>
+                      <td>{item.role}</td>
+                      <td>
+                        <span className="primary">View Detail</span>
+                      </td>
+                      <td className="control">
+                        <div className="icon">
+                          <i class="fas fa-ellipsis-v"></i>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                );
+                        <div className="list__action">
+                          <div
+                            className="action__item"
+                            onClick={(value) => handleEdit(item)}
+                          >
+                            <ion-icon name="create-outline"></ion-icon> Edit
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                }
               })}
             </tbody>
           </table>

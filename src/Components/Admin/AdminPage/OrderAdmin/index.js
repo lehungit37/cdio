@@ -45,7 +45,7 @@ const OrderAdmin = () => {
   //sort type isCheck
   convertArr.sort((a, b) => {
     if (a.value.isCheck > b.value.isCheck) return 1;
-    if (a.value.isCheck < b.value.isCheck) return -1;
+    else if (a.value.isCheck < b.value.isCheck) return -1;
     else return 0;
   });
   const formatID = (id) => {
@@ -205,9 +205,7 @@ const OrderAdmin = () => {
                             >
                               <ion-icon name="create-outline"></ion-icon> Edit
                             </div>
-                            <div className="action__item">
-                              <ion-icon name="trash-outline"></ion-icon> Delete
-                            </div>
+                           
                           </div>
                         </td>
                       </tr>

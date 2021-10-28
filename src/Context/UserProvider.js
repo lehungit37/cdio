@@ -92,14 +92,15 @@ const UserProvider = ({ children }) => {
     quantityUpdate,
     quantity
   ) => {
-    if (quantity-1 === 0) {
+
+    if (quantity  === 0) {
       db.collection("GioHang").doc(idCartItem).delete();
     } else {
       await db
         .collection("GioHang")
         .doc(idCartItem)
         .update({
-          quantity: firebase.firestore.FieldValue.increment(quantityUpdate),
+          quantity: quantity,
         });
     }
   };

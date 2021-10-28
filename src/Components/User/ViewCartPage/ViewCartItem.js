@@ -28,7 +28,7 @@ const ViewCartItem = (props) => {
        {formatNumberMoney(value.value.Gia)}
       </div>
       <div className="product__cart-quantity">
-        <div className="minus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, -1, value.quantity)}>
+        <div className="minus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, -1, value.quantity-1)}>
           <i className="fa fa-minus" aria-hidden="true" />
         </div>
         <input
@@ -38,7 +38,7 @@ const ViewCartItem = (props) => {
           value = {value.quantity}
           disabled="true"
         />
-        <div className="plus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, 1, value.quantity)}>
+        <div className="plus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, 1, value.quantity+1)}>
           <i className="fa fa-plus" aria-hidden="true" />
         </div>
       </div>

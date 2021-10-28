@@ -59,34 +59,40 @@ const ProductAdminAdd = () => {
 
     const arrSize = product.Size.split(",");
 
-    if (arrImgURL) {
-      if (product.TenSp && product.Size && product.Description) {
-        const id = v4();
+    
+      if (product.TenSp && product.Size && product.Description && product.Gia) {
+        if(product.Gia > 0){
 
-        const value = {
-          TenSp: product.TenSp,
-          Size: arrSize,
-          Gia: Number(product.Gia),
-          Hinh: arrImgURL[0],
-          HinhLienQuan: arrImgURL,
-          Description: product.Description,
-          MaLoai: product.MaLoai,
-          MaSp: id,
-        };
-        db.collection("SanPham")
-          .doc(id)
-          .set(value)
-          .then(() => {
-            alert("Thêm sản phẩm thành công");
-            setProduct(initValue)
-          })
-          .catch(() => {
-            alert("Thêm sản phẩm thất bại");
-          });
+          const id = v4();
+          const value = {
+            TenSp: product.TenSp,
+            Size: arrSize,
+            Gia: Number(product.Gia),
+            Hinh: arrImgURL[0],
+            HinhLienQuan: arrImgURL,
+            Description: product.Description,
+            MaLoai: product.MaLoai,
+            MaSp: id,
+          };
+          db.collection("SanPham")
+            .doc(id)
+            .set(value)
+            .then(() => {
+              alert("Thêm sản phẩm thành công");
+              setProduct(initValue)
+            })
+            .catch(() => {
+              alert("Thêm sản phẩm thất bại");
+            })
+        }
+        else{
+          alert("Giá không nhỏ hơn 1")
+        }
+
       } else {
         alert("Vui lòng điền đầy đủ thông tin");
       }
-    }
+    
   };
 
   return (
@@ -106,17 +112,21 @@ const ProductAdminAdd = () => {
               type="text"
               className="form-control"
               placeholder="Enter name product"
+              required = {true}
             />
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Price Product</label>
             <input
               type="number"
+              min={0}
               value={product.Gia}
               onChange={handleOnChangeInput}
               name="Gia"
               className="form-control"
               placeholder="Enter price product"
+              required = {true}
+
             />
           </div>
          
@@ -129,6 +139,8 @@ const ProductAdminAdd = () => {
               className="form-control"
               multiple
               placeholder="Enter price product"
+              required = {true}
+
             />
           </div>
           <div className="form-group">
@@ -140,6 +152,8 @@ const ProductAdminAdd = () => {
               name="Size"
               className="form-control"
               placeholder="Vui lòng ngăn cách Size bằng dấu ','"
+              required = {true}
+
             />
           </div>
           <div className="form-group">
@@ -168,6 +182,8 @@ const ProductAdminAdd = () => {
               className="form-control"
               name="Description"
               placeholder="Nhập mô tả chi tiết sản phẩm "
+              required = {true}
+
             />
           </div>
           <div className="btn btn-primary" onClick={handleSubmitAddProduct}>

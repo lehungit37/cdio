@@ -65,10 +65,10 @@ export default function Menu(props) {
                   className="item__control"
                   onClick={() => setIsOpenControl(false)}
                 >
-                  <Link to = "/my-order">Đơn hàng của tôi</Link>
+                  <Link to = "/my-order">My Order</Link>
                 </div>
                 <div className="item__control logOut" onClick={handleSignOut}>
-                  Đăng xuất
+                  Sign Out
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Menu(props) {
       return (
         <>
           <div className="menu__topItem">
-            <Link to="/login">Đăng nhập</Link>
+            <Link to="/login">Sign In</Link>
           </div>
         </>
       );

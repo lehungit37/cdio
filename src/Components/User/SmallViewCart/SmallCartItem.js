@@ -26,9 +26,9 @@ const SmallCartItem = (props) => {
           Size: <span>{value.size}</span>
         </p>
         <div className="change">
-          <div className="minus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, -1, value.quantity)}>-</div>
+          <div className="minus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id,-1, value.quantity-1)}>-</div>
           <input type="text" value = {value.quantity} disabled="true" />
-          <div className="plus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, 1, value.quantity)}>+</div>
+          <div className="plus" onClick = {(id, quantityUpdate, quantity)=>handleUpdateQuantity(value.id, 1, value.quantity+1)}>+</div>
           <div className="total">{formatNumberMoney(value.quantity * value.value.Gia)}</div>
         </div>
       </div>

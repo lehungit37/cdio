@@ -101,7 +101,7 @@ export default function LoginPage() {
           placeholder="Password"
           required
         />
-        <button className="btn btn-success btn-block" type="submit">
+        <button onSubmit={handleSubmit}className="btn btn-success btn-block" type="submit">
           <i className="fas fa-sign-in-alt" /> Sign in
         </button>
         <p style={{ textAlign: "center" }}> OR</p>

@@ -46,12 +46,12 @@ export default function AuthProvider({ children }) {
   const signIn = async (email, password) => {
     return await auth
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        alert("Login Success");
-      })
-      .catch(() => {
-        alert("Login fail");
-      });
+      // .then(() => {
+      //   alert("Login Success");
+      // })
+      // .catch(() => {
+      //   alert("Login fail");
+      // });
   };
   const signOut = async () => {
     return await auth.signOut();
